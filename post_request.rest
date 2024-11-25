@@ -5,3 +5,14 @@ GET http://localhost:3000/posts
 ###
 
 GET http://localhost:3000/posts/673db4d795e9de7db703694f
+
+###
+
+POST http://localhost:3000/posts
+Content-Type: application/json
+
+{
+    "title": "TEST",
+    "content": "TEST",
+    "owner": "TEST"
+}
