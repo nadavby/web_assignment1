@@ -30,4 +30,16 @@ const getPostById = async (req, res) => {
     }
    };
 
-module.exports = {getAllPosts, getPostById}; 
+   const createPost = async (req, res) => {
+    try {
+        const post = await Post.create(req.body);
+        if(!post){
+            return res.status(404).send({ error: "One of the fields is invalid" });
+        }
+        res.status(201).send(post);
+    } catch(err) {
+        res.status(400).send(err.message);
+    }
+    };   
+
+module.exports = {getAllPosts, getPostById, createPost}; 
