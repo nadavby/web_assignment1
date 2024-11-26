@@ -6,4 +6,8 @@ router.post("/", Comment.createComment);
 
 router.get("/:id", Comment.getCommentById);
 
+router.delete("/:id", Comment.deleteComment);
+
+router.put("/:id", Comment.updateComment);
+
 module.exports = router;

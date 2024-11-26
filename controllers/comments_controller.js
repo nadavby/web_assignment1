@@ -31,11 +31,7 @@ const updateComment = async (req, res) => {
     const { content } = req.body;
 
     try {
-        const updatedComment = await Comment.findByIdAndUpdate(
-            id,
-            { content },
-            { new: true, runValidators: true }
-        );
+        const updatedComment = await Comment.findByIdAndUpdate(id, { content },{ new: true, runValidators: true });
         if (!updatedComment) {
             return res.status(404).send({ error: "Comment not found" });
         }
@@ -45,4 +41,18 @@ const updateComment = async (req, res) => {
     }
 };
 
-module.exports = {createComment,getCommentById,updateComment};
+const deleteComment = async (req, res) => {
+    const  filterid  = req.params.id;
+
+    try {
+        const deletedComment = await Comment.findByIdAndDelete(filterid);
+        if (!deletedComment) {
+            return res.status(404).send({ error: "Comment not found" });
+        }
+        return res.status(200).send({ message: "Comment deleted successfully" });
+    } catch (err) {
+        return res.status(500).send({ error: err.message });
+    }
+};
+
+module.exports = {createComment,getCommentById,updateComment,deleteComment};
