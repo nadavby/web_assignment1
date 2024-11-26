@@ -56,7 +56,7 @@ const deleteComment = async (req, res) => {
 };
 
 const getCommentsByPost = async (req, res) => {
-    const { postId } = req.params;
+    const  postId  = req.params.id;
     
     try {
         const comments = await Comment.find( postId );
