@@ -52,10 +52,10 @@ const getPostById = async (req, res) => {
             if(!Posts){
                 return res.status(404).send({ error: "Post not found" });
             }
-        return res.status(201).send(Posts);
+            return res.status(201).send(Posts);
         } catch (err) {
             return res.status(400).send(err.message);
         }
     };
 
-module.exports = {getAllPosts, getPostById, createPost}; 
+module.exports = {getAllPosts, getPostById, createPost, getPostsByOwner}; 
