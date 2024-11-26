@@ -6,4 +6,6 @@ router.post("/", Comment.createComment);
 
 router.get("/:id", Comment.getCommentById);
 
+router.put("/:id", Comment.updateComment);
+
 module.exports = router;
