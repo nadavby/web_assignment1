@@ -1,0 +1,11 @@
+###
+
+POST http://localhost:3000/comments
+Content-Type: application/json
+
+{
+    "postId": "673db4d795e9de7db703694f",
+    "content": "This is a comment.",
+    "author": "John Doe"
+}
+
