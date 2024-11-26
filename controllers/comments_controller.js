@@ -12,5 +12,18 @@ const createComment = async (req, res) => {
         return res.status(500).json({ error: "postId is not valid" });
     }
 };
+const getCommentById = async (req, res) => {
+    const { id } = req.params;
 
-module.exports = {createComment};
+    try {
+        const comment = await Comment.findById(id);
+        if (!comment) {
+            return res.status(404).send({ error: "Comment not found" });
+        }
+        return res.status(200).send(comment);
+    } catch (err) {
+        return res.status(500).send({ error: err.message });
+    }
+};
+
+module.exports = {createComment,getCommentById};
