@@ -16,4 +16,6 @@ router.post("/", (req, res) => {
     Post.createPost(req, res);
     });
 
+router.put("/:id", Post.updatePostById);    
+
 module.exports = router;
