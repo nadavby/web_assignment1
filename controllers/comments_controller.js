@@ -27,11 +27,11 @@ const getCommentById = async (req, res) => {
     }
 };
 const updateComment = async (req, res) => {
-    const { id } = req.params;
+    const filterid  = req.params.id;
     const { content } = req.body;
 
     try {
-        const updatedComment = await Comment.findByIdAndUpdate(id, { content },{ new: true, runValidators: true });
+        const updatedComment = await Comment.findByIdAndUpdate(filterid, { content },{ new: true, runValidators: true });
         if (!updatedComment) {
             return res.status(404).send({ error: "Comment not found" });
         }
