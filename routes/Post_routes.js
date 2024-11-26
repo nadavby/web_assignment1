@@ -1,7 +1,14 @@
 const express = require('express')
 const router =express.Router();
 const Post = require("../controllers/post_controller");  
-router.get("/", Post.getAllPosts);
+
+router.get("/", (req, res) => {
+    if (req.query.owner) {
+        return Post.getPostsByOwner(req, res); 
+    } else {
+        return Post.getAllPosts(req, res); 
+    }
+});
 
 router.get("/:id", Post.getPostById);
 
