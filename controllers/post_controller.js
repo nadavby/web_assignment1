@@ -58,4 +58,21 @@ const getPostById = async (req, res) => {
         }
     };
 
-module.exports = {getAllPosts, getPostById, createPost}; 
+    const updatePostById = async (req, res) => {
+        const idfilter = req.params.id; 
+        const updateData = req.body; 
+        if (!idfilter) {
+            return res.status(400).send({ error: "Post ID is required" });
+        }
+        try {
+            const updatedPost = await Post.findByIdAndUpdate(idfilter, updateData);
+            if (!updatedPost){
+                return console.log("The Post ID is not valid");
+            }
+            return res.status(200).send(updatedPost);
+        } catch (err) {
+            return res.status(500).send(err.message);
+        }
+    }
+
+module.exports = {getAllPosts, getPostById, createPost,getPostsByOwner,updatePostById}; 
