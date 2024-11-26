@@ -23,7 +23,7 @@ GET http://localhost:3000/posts?owner=Nadav
 
 ###
 
-PUT http://localhost:3000/posts/673db4d795e9de7db703694f
+PUT http://localhost:3000/posts/6745d7a8d0524dbda22ba039
 Content-Type: application/json
 
 {
