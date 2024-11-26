@@ -21,3 +21,7 @@ Content-Type: application/json
 ###
 
 DELETE  http://localhost:3000/comments/67462f7a84ea9a135866e1dd
+
+###
+
+GET http://localhost:3000/comments/post/6745d7a8d0524dbda22ba039

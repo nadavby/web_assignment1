@@ -55,4 +55,15 @@ const deleteComment = async (req, res) => {
     }
 };
 
-module.exports = {createComment,getCommentById,updateComment,deleteComment};
+const getCommentsByPost = async (req, res) => {
+    const { postId } = req.params;
+    
+    try {
+        const comments = await Comment.find( postId );
+        return res.status(200).send(comments);
+    } catch (err) {
+        return res.status(500).send({ error: err.message });
+    }
+};
+
+module.exports = {createComment,getCommentById,updateComment,deleteComment, getCommentsByPost};
