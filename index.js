@@ -14,8 +14,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 const postsRoutes = require("./routes/Post_routes.js");
+const commentsRoutes = require("./routes/Comments_routes.js");
 
 app.use("/posts", postsRoutes);
+app.use("/comments", commentsRoutes);
 
 app.listen(port,() =>{
     console.log(`Exemple app listening on port http://localhost:${port}`);
