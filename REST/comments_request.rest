@@ -9,3 +9,7 @@ Content-Type: application/json
     "author": "John Doe"
 }
 
+###
+
+GET http://localhost:3000/comments/67434458681059c44c2af555
+
