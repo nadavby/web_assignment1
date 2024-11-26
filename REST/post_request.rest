@@ -4,7 +4,7 @@ GET http://localhost:3000/posts
 
 ###
 
-GET http://localhost:3000/posts/6744d08cd35b6b6c09337852
+GET http://localhost:3000/posts/6745d7a8d0524dbda22ba039
 
 ###
 
@@ -14,7 +14,7 @@ Content-Type: application/json
 {
     "title": "TEST",
     "content": "TEST",
-    "owner": "TEST"
+    "owner": "Nadav"
 }
 
 ###
