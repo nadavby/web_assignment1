@@ -11,5 +11,10 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/comments/67462f7a84ea9a135866e1dd
+PUT http://localhost:3000/comments/67437137c383bfaaa3d06d63
+Content-Type: application/json
+
+{
+    "content": "Update Comment"
+}
 

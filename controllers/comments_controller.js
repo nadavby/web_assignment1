@@ -26,5 +26,23 @@ const getCommentById = async (req, res) => {
         return res.status(500).send({ error: err.message });
     }
 };
+const updateComment = async (req, res) => {
+    const { id } = req.params;
+    const { content } = req.body;
 
-module.exports = {createComment,getCommentById};
+    try {
+        const updatedComment = await Comment.findByIdAndUpdate(
+            id,
+            { content },
+            { new: true, runValidators: true }
+        );
+        if (!updatedComment) {
+            return res.status(404).send({ error: "Comment not found" });
+        }
+        return res.status(200).send(updatedComment);
+    } catch (err) {
+        return res.status(500).send({ error: err.message });
+    }
+};
+
+module.exports = {createComment,getCommentById,updateComment};
