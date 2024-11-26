@@ -52,11 +52,12 @@ const getPostById = async (req, res) => {
             if(!Posts){
                 return res.status(404).send({ error: "Post not found" });
             }
-        return res.status(201).send(Posts);
+            return res.status(201).send(Posts);
         } catch (err) {
             return res.status(400).send(err.message);
         }
     };
+
 
     const updatePostById = async (req, res) => {
         const idfilter = req.params.id; 
@@ -76,3 +77,4 @@ const getPostById = async (req, res) => {
     }
 
 module.exports = {getAllPosts, getPostById, createPost,getPostsByOwner,updatePostById}; 
+
