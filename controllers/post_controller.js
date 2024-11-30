@@ -1,13 +1,15 @@
 const Post = require("../models/post_model");
 
-const getAllPosts = async (req,res) =>{
-try{
-     const Posts = await Post.find();
-    return res.status(200).send(Posts);
-}
-catch(err){
-    return res.status(400).send(err.message);
-}};
+const getAllPosts = async (req, res) => {
+    try {
+
+        const posts = await Post.find();
+        res.send(posts);
+      }
+     catch (error) {
+      res.status(400).send(error.message);
+    }
+  };
 
 const getPostById = async (req, res) => {
     const idfilter = req.params.id;
@@ -37,18 +39,21 @@ const getPostById = async (req, res) => {
     }
     };   
 
-    const getPostsByOwner = async (req,res) => {
-        const ownerfilter = req.query.owner;
-        if(!ownerfilter){
-            return res.status(404).send({ error: "Owner filter is required" });
-        }
+    const getPostsBySender = async (req,res) => {
+        const senderfilter = req.query.sender;
         try {
-            const Posts = await Post.find({owner: ownerfilter});
-            if(Posts == {}){
-                return res.status(404).send({ error: "Post not found" });
+            if (senderfilter || senderfilter.trim() === "") 
+                {
+              const posts = await Post.find({ sender: senderfilter });
+              return res.status(200).send(posts);
+            } 
+            else 
+            {
+                return res.status(500).send({ error: "Sender is required" });
             }
-            return res.status(200).send(Posts);
-        } catch (err) {
+        } 
+        catch (err)
+        {
             return res.status(400).send(err.message);
         }
     };
@@ -69,7 +74,7 @@ const getPostById = async (req, res) => {
         } catch (err) {
             return res.status(500).send(err.message);
         }
-    }
+    };
 
-module.exports = {getAllPosts, getPostById, createPost,getPostsByOwner,updatePostById}; 
+module.exports = {getAllPosts, getPostById, createPost,getPostsBySender,updatePostById}; 
 

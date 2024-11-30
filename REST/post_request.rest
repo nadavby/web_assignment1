@@ -14,12 +14,12 @@ Content-Type: application/json
 {
     "title": "TEST",
     "content": "TEST",
-    "owner": "Sacha"
+    "sender": "LI"
 }
 
 ###
 
-GET http://localhost:3000/posts?owner=Nadav
+GET http://localhost:3000/posts?sender=
 
 ###
 
