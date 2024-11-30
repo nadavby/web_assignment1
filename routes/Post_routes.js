@@ -2,11 +2,11 @@ const express = require('express')
 const router =express.Router();
 const Post = require("../controllers/post_controller");  
 
-router.get("/", (req, res) => {
-    if (req.query.owner) {
-        return Post.getPostsByOwner(req, res); 
+router.get("/",(req,res) => {
+    if(req.query.sender || req.query.sender.trim() === ""){
+        Post.getPostsBySender(req,res);
     } else {
-        return Post.getAllPosts(req, res); 
+        Post.getAllPosts(req,res);
     }
 });
 
